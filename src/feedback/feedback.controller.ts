@@ -5,11 +5,13 @@ import { CreateFeedbackDto } from './dto/create-feedback.dto';
 import { ResponseHandler } from './../utils/responseHandler';
 import { Roles } from 'src/auth/roles.decorator';
 import { UserRoles } from 'src/users/user.constants';
+import { Public } from 'src/auth/public.route';
 
 @Controller('feedback')
 export class FeedbackController {
   constructor(private readonly feedbackService: FeedbackService) {}
 
+  @Public()
   @Post('submit')
   async createFeedback(@Body() payload: CreateFeedbackDto) {
     try {
@@ -25,6 +27,7 @@ export class FeedbackController {
   }
 
   // retrieve all feedbacks
+  @Roles(UserRoles.ADMIN)
   @Get('all-feedbacks')
   async allFeedbacks(@Query() query: any) {
     try {
