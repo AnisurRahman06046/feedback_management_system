@@ -3,6 +3,8 @@ import { FeedbackService } from './feedback.service';
 import { CreateFeedbackDto } from './dto/create-feedback.dto';
 
 import { ResponseHandler } from './../utils/responseHandler';
+import { Roles } from 'src/auth/roles.decorator';
+import { UserRoles } from 'src/users/user.constants';
 
 @Controller('feedback')
 export class FeedbackController {
@@ -37,6 +39,7 @@ export class FeedbackController {
     }
   }
 
+  @Roles(UserRoles.ADMIN)
   @Get('analysis')
   async feedbackAnalysis() {
     try {
