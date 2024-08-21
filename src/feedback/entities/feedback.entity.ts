@@ -2,8 +2,8 @@ import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 
 @Schema({ timestamps: true })
 export class Feedback {
-  @Prop({ type: String, required: true })
-  rating: string;
+  @Prop({ type: Number, required: true })
+  rating: number;
 
   @Prop({ type: String, required: true })
   comment: string;

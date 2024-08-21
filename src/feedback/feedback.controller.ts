@@ -36,4 +36,14 @@ export class FeedbackController {
       return ResponseHandler.error(error.message);
     }
   }
+
+  @Get('analysis')
+  async feedbackAnalysis() {
+    try {
+      const result = await this.feedbackService.feedbackAnalysis();
+      return ResponseHandler.success(result, 'Successfull', HttpStatus.OK);
+    } catch (error) {
+      return ResponseHandler.error(error.message);
+    }
+  }
 }

@@ -50,4 +50,49 @@ export class FeedbackService {
       data: result,
     };
   }
+
+  // Feedback analytics for dashboard
+  async feedbackAnalysis() {
+    const [averageRating, ratingDistribution, topFeedback, feedbackTrends] =
+      await Promise.all([
+        this.feedBackModel.aggregate([
+          {
+            $group: {
+              _id: null,
+              averageRating: { $avg: { $toDouble: '$rating' } },
+            },
+          },
+        ]),
+        this.feedBackModel.aggregate([
+          {
+            $group: {
+              _id: '$rating',
+              count: { $sum: 1 },
+            },
+          },
+          {
+            $sort: { _id: 1 },
+          },
+        ]),
+        this.feedBackModel.find().sort({ rating: -1 }).limit(5).exec(),
+        this.feedBackModel.aggregate([
+          {
+            $group: {
+              _id: { $dateToString: { format: '%Y-%m', date: '$createdAt' } },
+              averageRating: { $avg: { $toDouble: '$rating' } },
+            },
+          },
+          {
+            $sort: { _id: 1 },
+          },
+        ]),
+      ]);
+
+    return {
+      averageRating: averageRating[0]?.averageRating || 0,
+      ratingDistribution,
+      topFeedback,
+      feedbackTrends,
+    };
+  }
 }

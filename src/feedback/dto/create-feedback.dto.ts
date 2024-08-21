@@ -1,12 +1,12 @@
-import { IsEmail, IsNotEmpty, IsString } from 'class-validator';
+import { IsEmail, IsNotEmpty, IsNumber, IsString } from 'class-validator';
 
 export class CreateFeedbackDto {
   @IsString()
   @IsNotEmpty()
   comment: string;
-  @IsString()
+  @IsNumber()
   @IsNotEmpty()
-  rating: string;
+  rating: number;
   @IsString()
   @IsNotEmpty()
   name: string;
