@@ -1,22 +1,11 @@
 import { Injectable } from '@nestjs/common';
-import { CreateFeedbackDto } from './dto/create-feedback.dto';
+import { InjectModel } from '@nestjs/mongoose';
+import { Feedback } from './entities/feedback.entity';
+import { Model } from 'mongoose';
 
 @Injectable()
 export class FeedbackService {
-  create(payload: CreateFeedbackDto) {
-    const data = payload;
-    return 'This action adds a new feedback';
-  }
-
-  findAll() {
-    return `This action returns all feedback`;
-  }
-
-  findOne(id: number) {
-    return `This action returns a #${id} feedback`;
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} feedback`;
-  }
+  constructor(
+    @InjectModel(Feedback.name) private feedBackModel: Model<Feedback>,
+  ) {}
 }
