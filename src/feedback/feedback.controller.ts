@@ -18,7 +18,7 @@ export class FeedbackController {
         HttpStatus.CREATED,
       );
     } catch (error) {
-      return ResponseHandler.error('Something went wrong');
+      return ResponseHandler.error(error.message);
     }
   }
 }
