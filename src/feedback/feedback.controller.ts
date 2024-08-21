@@ -1,4 +1,4 @@
-import { Controller, Post, Body, HttpStatus } from '@nestjs/common';
+import { Controller, Post, Body, HttpStatus, Get, Query } from '@nestjs/common';
 import { FeedbackService } from './feedback.service';
 import { CreateFeedbackDto } from './dto/create-feedback.dto';
 
@@ -16,6 +16,21 @@ export class FeedbackController {
         result,
         'Submitted successfully',
         HttpStatus.CREATED,
+      );
+    } catch (error) {
+      return ResponseHandler.error(error.message);
+    }
+  }
+
+  // retrieve all feedbacks
+  @Get('all-feedbacks')
+  async allFeedbacks(@Query() query: any) {
+    try {
+      const result = await this.feedbackService.allFeedbacks(query);
+      return ResponseHandler.success(
+        result,
+        'Fetched successfully',
+        HttpStatus.OK,
       );
     } catch (error) {
       return ResponseHandler.error(error.message);

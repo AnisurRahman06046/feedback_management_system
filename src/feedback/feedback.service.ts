@@ -17,8 +17,37 @@ export class FeedbackService {
   }
 
   // retrieve all feedback for admin
-  async allFeedbacks() {
-    const result = await this.feedBackModel.find({});
-    return result;
+  async allFeedbacks(query: any) {
+    const { page = 1, limit = 10, rating, search } = query;
+    const filter: any = {};
+    if (rating) {
+      filter.rating = rating;
+    }
+
+    // Searching by comment text or customer name
+    if (search) {
+      filter.$or = [
+        { comment: { $regex: search, $options: 'i' } }, // case-insensitive search
+        { name: { $regex: search, $options: 'i' } }, // case-insensitive search
+      ];
+    }
+
+    // Pagination
+    const skip = (page - 1) * limit;
+    const result = await this.feedBackModel
+      .find(filter)
+      .skip(skip)
+      .limit(limit)
+      .exec();
+
+    // Count total documents for pagination metadata
+    const total = await this.feedBackModel.countDocuments(filter);
+
+    return {
+      total,
+      page: parseInt(page, 10),
+      limit: parseInt(limit, 10),
+      data: result,
+    };
   }
 }
