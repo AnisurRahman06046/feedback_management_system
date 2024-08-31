@@ -3,8 +3,8 @@ import { FeedbackService } from './feedback.service';
 import { CreateFeedbackDto } from './dto/create-feedback.dto';
 
 import { ResponseHandler } from './../utils/responseHandler';
-import { Roles } from 'src/auth/roles.decorator';
-import { UserRoles } from 'src/users/user.constants';
+// import { Roles } from 'src/auth/roles.decorator';
+// import { UserRoles } from 'src/users/user.constants';
 import { Public } from 'src/auth/public.route';
 
 @Controller('feedback')
@@ -25,9 +25,9 @@ export class FeedbackController {
       return ResponseHandler.error(error.message);
     }
   }
-
+  @Public()
   // retrieve all feedbacks
-  @Roles(UserRoles.ADMIN)
+  // @Roles(UserRoles.ADMIN)
   @Get('all-feedbacks')
   async allFeedbacks(@Query() query: any) {
     try {
@@ -41,8 +41,8 @@ export class FeedbackController {
       return ResponseHandler.error(error.message);
     }
   }
-
-  @Roles(UserRoles.ADMIN)
+  @Public()
+  // @Roles(UserRoles.ADMIN)
   @Get('analysis')
   async feedbackAnalysis() {
     try {

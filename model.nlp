@@ -1,0 +1,1210 @@
+{
+  "settings": {
+    "languages": [
+      "en"
+    ],
+    "tag": "nlp",
+    "threshold": 0.5,
+    "autoLoad": true,
+    "autoSave": true,
+    "modelFileName": "model.nlp",
+    "executeActionsBeforeAnswers": false,
+    "calculateSentiment": true
+  },
+  "nluManager": {
+    "settings": {
+      "tag": "nlu-manager"
+    },
+    "locales": [
+      "en"
+    ],
+    "languageNames": {},
+    "domainManagers": {
+      "en": {
+        "settings": {
+          "locale": "en",
+          "trainByDomain": false,
+          "tag": "domain-manager-en",
+          "nluByDomain": {
+            "default": {
+              "className": "NeuralNlu",
+              "settings": {}
+            }
+          },
+          "useStemDict": true
+        },
+        "stemDict": {
+          "i,love,this": {
+            "intent": "sentiment.positive",
+            "domain": "default"
+          },
+          "fantast,is,this": {
+            "intent": "sentiment.positive",
+            "domain": "default"
+          },
+          "am,happi,i,veri": {
+            "intent": "sentiment.positive",
+            "domain": "default"
+          },
+          "experi,great": {
+            "intent": "sentiment.positive",
+            "domain": "default"
+          },
+          "absolut,wonder": {
+            "intent": "sentiment.positive",
+            "domain": "default"
+          },
+          "a,enjoy,i,it,lot": {
+            "intent": "sentiment.positive",
+            "domain": "default"
+          },
+          "i,love,servic,this": {
+            "intent": "sentiment.positive",
+            "domain": "default"
+          },
+          "experi,fantast,this,was": {
+            "intent": "sentiment.positive",
+            "domain": "default"
+          },
+          "am,i,outcom,satisfi,the,veri,with": {
+            "intent": "sentiment.positive",
+            "domain": "default"
+          },
+          "everyth,smooth,went": {
+            "intent": "sentiment.positive",
+            "domain": "default"
+          },
+          "outstand,truli,work": {
+            "intent": "sentiment.positive",
+            "domain": "default"
+          },
+          "exceed,expect,my": {
+            "intent": "sentiment.positive",
+            "domain": "default"
+          },
+          "servic,terribl,this,was": {
+            "intent": "sentiment.negative",
+            "domain": "default"
+          },
+          "am,disappoint,extrem,i": {
+            "intent": "sentiment.negative",
+            "domain": "default"
+          },
+          "bad,experi,the,veri,was": {
+            "intent": "sentiment.negative",
+            "domain": "default"
+          },
+          "a,had,i,terribl,time": {
+            "intent": "sentiment.negative",
+            "domain": "default"
+          },
+          "a,huge,it,letdown,was": {
+            "intent": "sentiment.negative",
+            "domain": "default"
+          },
+          "absolut,hate,i,it": {
+            "intent": "sentiment.negative",
+            "domain": "default"
+          },
+          "an,averag,experi,it,was": {
+            "intent": "sentiment.neutral",
+            "domain": "default"
+          },
+          "bad,good,neither,nor,servic,the,was": {
+            "intent": "sentiment.neutral",
+            "domain": "default"
+          },
+          "but,it,noth,okay,special,was": {
+            "intent": "sentiment.neutral",
+            "domain": "default"
+          },
+          "experi,fine,just,the,was": {
+            "intent": "sentiment.neutral",
+            "domain": "default"
+          },
+          "be,better,could,it": {
+            "intent": "sentiment.neutral",
+            "domain": "default"
+          },
+          "about,it,noth,remark": {
+            "intent": "sentiment.neutral",
+            "domain": "default"
+          },
+          "is,terribl,this": {
+            "intent": "sentiment.negative",
+            "domain": "default"
+          },
+          "am,disappoint,i,so": {
+            "intent": "sentiment.negative",
+            "domain": "default"
+          },
+          "all,at,good,not": {
+            "intent": "sentiment.negative",
+            "domain": "default"
+          },
+          "bad,experi,veri": {
+            "intent": "sentiment.negative",
+            "domain": "default"
+          },
+          "hate,i,it": {
+            "intent": "sentiment.negative",
+            "domain": "default"
+          },
+          "aw,it,was": {
+            "intent": "sentiment.negative",
+            "domain": "default"
+          },
+          "is,it,okay": {
+            "intent": "sentiment.neutral",
+            "domain": "default"
+          },
+          "be,better,could": {
+            "intent": "sentiment.neutral",
+            "domain": "default"
+          },
+          "noth,special": {
+            "intent": "sentiment.neutral",
+            "domain": "default"
+          },
+          "averag,it,was": {
+            "intent": "sentiment.neutral",
+            "domain": "default"
+          },
+          "fine,just": {
+            "intent": "sentiment.neutral",
+            "domain": "default"
+          },
+          "bad,good,neither,nor": {
+            "intent": "sentiment.neutral",
+            "domain": "default"
+          }
+        },
+        "intentDict": {
+          "sentiment.positive": "default",
+          "sentiment.negative": "default",
+          "sentiment.neutral": "default"
+        },
+        "sentences": [
+          {
+            "domain": "default",
+            "utterance": "I love this!",
+            "intent": "sentiment.positive"
+          },
+          {
+            "domain": "default",
+            "utterance": "This is fantastic",
+            "intent": "sentiment.positive"
+          },
+          {
+            "domain": "default",
+            "utterance": "I am very happy",
+            "intent": "sentiment.positive"
+          },
+          {
+            "domain": "default",
+            "utterance": "Great experience!",
+            "intent": "sentiment.positive"
+          },
+          {
+            "domain": "default",
+            "utterance": "Absolutely wonderful!",
+            "intent": "sentiment.positive"
+          },
+          {
+            "domain": "default",
+            "utterance": "I enjoyed it a lot",
+            "intent": "sentiment.positive"
+          },
+          {
+            "domain": "default",
+            "utterance": "I love this service!",
+            "intent": "sentiment.positive"
+          },
+          {
+            "domain": "default",
+            "utterance": "This experience was fantastic!",
+            "intent": "sentiment.positive"
+          },
+          {
+            "domain": "default",
+            "utterance": "I am very satisfied with the outcome.",
+            "intent": "sentiment.positive"
+          },
+          {
+            "domain": "default",
+            "utterance": "Everything went smoothly.",
+            "intent": "sentiment.positive"
+          },
+          {
+            "domain": "default",
+            "utterance": "Truly outstanding work!",
+            "intent": "sentiment.positive"
+          },
+          {
+            "domain": "default",
+            "utterance": "Exceeded my expectations.",
+            "intent": "sentiment.positive"
+          },
+          {
+            "domain": "default",
+            "utterance": "This service was terrible.",
+            "intent": "sentiment.negative"
+          },
+          {
+            "domain": "default",
+            "utterance": "I am extremely disappointed.",
+            "intent": "sentiment.negative"
+          },
+          {
+            "domain": "default",
+            "utterance": "The experience was very bad.",
+            "intent": "sentiment.negative"
+          },
+          {
+            "domain": "default",
+            "utterance": "I had a terrible time.",
+            "intent": "sentiment.negative"
+          },
+          {
+            "domain": "default",
+            "utterance": "It was a huge letdown.",
+            "intent": "sentiment.negative"
+          },
+          {
+            "domain": "default",
+            "utterance": "I absolutely hated it.",
+            "intent": "sentiment.negative"
+          },
+          {
+            "domain": "default",
+            "utterance": "It was an average experience.",
+            "intent": "sentiment.neutral"
+          },
+          {
+            "domain": "default",
+            "utterance": "The service was neither good nor bad.",
+            "intent": "sentiment.neutral"
+          },
+          {
+            "domain": "default",
+            "utterance": "It was okay, but nothing special.",
+            "intent": "sentiment.neutral"
+          },
+          {
+            "domain": "default",
+            "utterance": "The experience was just fine.",
+            "intent": "sentiment.neutral"
+          },
+          {
+            "domain": "default",
+            "utterance": "It could be better.",
+            "intent": "sentiment.neutral"
+          },
+          {
+            "domain": "default",
+            "utterance": "Nothing remarkable about it.",
+            "intent": "sentiment.neutral"
+          },
+          {
+            "domain": "default",
+            "utterance": "This is terrible",
+            "intent": "sentiment.negative"
+          },
+          {
+            "domain": "default",
+            "utterance": "I am so disappointed",
+            "intent": "sentiment.negative"
+          },
+          {
+            "domain": "default",
+            "utterance": "Not good at all",
+            "intent": "sentiment.negative"
+          },
+          {
+            "domain": "default",
+            "utterance": "Very bad experience",
+            "intent": "sentiment.negative"
+          },
+          {
+            "domain": "default",
+            "utterance": "I hated it",
+            "intent": "sentiment.negative"
+          },
+          {
+            "domain": "default",
+            "utterance": "It was awful",
+            "intent": "sentiment.negative"
+          },
+          {
+            "domain": "default",
+            "utterance": "It is okay",
+            "intent": "sentiment.neutral"
+          },
+          {
+            "domain": "default",
+            "utterance": "Could be better",
+            "intent": "sentiment.neutral"
+          },
+          {
+            "domain": "default",
+            "utterance": "Nothing special",
+            "intent": "sentiment.neutral"
+          },
+          {
+            "domain": "default",
+            "utterance": "It was average",
+            "intent": "sentiment.neutral"
+          },
+          {
+            "domain": "default",
+            "utterance": "Just fine",
+            "intent": "sentiment.neutral"
+          },
+          {
+            "domain": "default",
+            "utterance": "Neither good nor bad",
+            "intent": "sentiment.neutral"
+          }
+        ],
+        "domains": {
+          "master_domain": {
+            "settings": {
+              "locale": "en",
+              "tag": "nlu-en",
+              "keepStopwords": true,
+              "nonefeatureValue": 1,
+              "nonedeltaMultiplier": 1.2,
+              "spellCheck": false,
+              "spellCheckDistance": 1,
+              "filterZeros": true,
+              "log": true
+            },
+            "features": {
+              "i": 1,
+              "love": 1,
+              "this": 1,
+              "is": 1,
+              "fantast": 1,
+              "am": 1,
+              "veri": 1,
+              "happi": 1,
+              "great": 1,
+              "experi": 1,
+              "absolut": 1,
+              "wonder": 1,
+              "enjoy": 1,
+              "it": 1,
+              "a": 1,
+              "lot": 1,
+              "servic": 1,
+              "was": 1,
+              "satisfi": 1,
+              "with": 1,
+              "the": 1,
+              "outcom": 1,
+              "everyth": 1,
+              "went": 1,
+              "smooth": 1,
+              "truli": 1,
+              "outstand": 1,
+              "work": 1,
+              "exceed": 1,
+              "my": 1,
+              "expect": 1,
+              "terribl": 1,
+              "extrem": 1,
+              "disappoint": 1,
+              "bad": 1,
+              "had": 1,
+              "time": 1,
+              "huge": 1,
+              "letdown": 1,
+              "hate": 1,
+              "an": 1,
+              "averag": 1,
+              "neither": 1,
+              "good": 1,
+              "nor": 1,
+              "okay": 1,
+              "but": 1,
+              "noth": 1,
+              "special": 1,
+              "just": 1,
+              "fine": 1,
+              "could": 1,
+              "be": 1,
+              "better": 1,
+              "remark": 1,
+              "about": 1,
+              "so": 1,
+              "not": 1,
+              "at": 1,
+              "all": 1,
+              "aw": 1
+            },
+            "intents": {
+              "sentiment.positive": 1,
+              "sentiment.negative": 1,
+              "sentiment.neutral": 1
+            },
+            "intentFeatures": {
+              "sentiment.positive": {
+                "i": 1,
+                "love": 1,
+                "this": 1,
+                "is": 1,
+                "fantast": 1,
+                "am": 1,
+                "veri": 1,
+                "happi": 1,
+                "great": 1,
+                "experi": 1,
+                "absolut": 1,
+                "wonder": 1,
+                "enjoy": 1,
+                "it": 1,
+                "a": 1,
+                "lot": 1,
+                "servic": 1,
+                "was": 1,
+                "satisfi": 1,
+                "with": 1,
+                "the": 1,
+                "outcom": 1,
+                "everyth": 1,
+                "went": 1,
+                "smooth": 1,
+                "truli": 1,
+                "outstand": 1,
+                "work": 1,
+                "exceed": 1,
+                "my": 1,
+                "expect": 1
+              },
+              "sentiment.negative": {
+                "this": 1,
+                "servic": 1,
+                "was": 1,
+                "terribl": 1,
+                "i": 1,
+                "am": 1,
+                "extrem": 1,
+                "disappoint": 1,
+                "the": 1,
+                "experi": 1,
+                "veri": 1,
+                "bad": 1,
+                "had": 1,
+                "a": 1,
+                "time": 1,
+                "it": 1,
+                "huge": 1,
+                "letdown": 1,
+                "absolut": 1,
+                "hate": 1,
+                "is": 1,
+                "so": 1,
+                "not": 1,
+                "good": 1,
+                "at": 1,
+                "all": 1,
+                "aw": 1
+              },
+              "sentiment.neutral": {
+                "it": 1,
+                "was": 1,
+                "an": 1,
+                "averag": 1,
+                "experi": 1,
+                "the": 1,
+                "servic": 1,
+                "neither": 1,
+                "good": 1,
+                "nor": 1,
+                "bad": 1,
+                "okay": 1,
+                "but": 1,
+                "noth": 1,
+                "special": 1,
+                "just": 1,
+                "fine": 1,
+                "could": 1,
+                "be": 1,
+                "better": 1,
+                "remark": 1,
+                "about": 1,
+                "is": 1
+              }
+            },
+            "featuresToIntent": {
+              "i": [
+                "sentiment.positive",
+                "sentiment.negative"
+              ],
+              "love": [
+                "sentiment.positive"
+              ],
+              "this": [
+                "sentiment.positive",
+                "sentiment.negative"
+              ],
+              "is": [
+                "sentiment.positive",
+                "sentiment.negative",
+                "sentiment.neutral"
+              ],
+              "fantast": [
+                "sentiment.positive"
+              ],
+              "am": [
+                "sentiment.positive",
+                "sentiment.negative"
+              ],
+              "veri": [
+                "sentiment.positive",
+                "sentiment.negative"
+              ],
+              "happi": [
+                "sentiment.positive"
+              ],
+              "great": [
+                "sentiment.positive"
+              ],
+              "experi": [
+                "sentiment.positive",
+                "sentiment.negative",
+                "sentiment.neutral"
+              ],
+              "absolut": [
+                "sentiment.positive",
+                "sentiment.negative"
+              ],
+              "wonder": [
+                "sentiment.positive"
+              ],
+              "enjoy": [
+                "sentiment.positive"
+              ],
+              "it": [
+                "sentiment.positive",
+                "sentiment.negative",
+                "sentiment.neutral"
+              ],
+              "a": [
+                "sentiment.positive",
+                "sentiment.negative"
+              ],
+              "lot": [
+                "sentiment.positive"
+              ],
+              "servic": [
+                "sentiment.positive",
+                "sentiment.negative",
+                "sentiment.neutral"
+              ],
+              "was": [
+                "sentiment.positive",
+                "sentiment.negative",
+                "sentiment.neutral"
+              ],
+              "satisfi": [
+                "sentiment.positive"
+              ],
+              "with": [
+                "sentiment.positive"
+              ],
+              "the": [
+                "sentiment.positive",
+                "sentiment.negative",
+                "sentiment.neutral"
+              ],
+              "outcom": [
+                "sentiment.positive"
+              ],
+              "everyth": [
+                "sentiment.positive"
+              ],
+              "went": [
+                "sentiment.positive"
+              ],
+              "smooth": [
+                "sentiment.positive"
+              ],
+              "truli": [
+                "sentiment.positive"
+              ],
+              "outstand": [
+                "sentiment.positive"
+              ],
+              "work": [
+                "sentiment.positive"
+              ],
+              "exceed": [
+                "sentiment.positive"
+              ],
+              "my": [
+                "sentiment.positive"
+              ],
+              "expect": [
+                "sentiment.positive"
+              ],
+              "terribl": [
+                "sentiment.negative"
+              ],
+              "extrem": [
+                "sentiment.negative"
+              ],
+              "disappoint": [
+                "sentiment.negative"
+              ],
+              "bad": [
+                "sentiment.negative",
+                "sentiment.neutral"
+              ],
+              "had": [
+                "sentiment.negative"
+              ],
+              "time": [
+                "sentiment.negative"
+              ],
+              "huge": [
+                "sentiment.negative"
+              ],
+              "letdown": [
+                "sentiment.negative"
+              ],
+              "hate": [
+                "sentiment.negative"
+              ],
+              "so": [
+                "sentiment.negative"
+              ],
+              "not": [
+                "sentiment.negative"
+              ],
+              "good": [
+                "sentiment.negative",
+                "sentiment.neutral"
+              ],
+              "at": [
+                "sentiment.negative"
+              ],
+              "all": [
+                "sentiment.negative"
+              ],
+              "aw": [
+                "sentiment.negative"
+              ],
+              "an": [
+                "sentiment.neutral"
+              ],
+              "averag": [
+                "sentiment.neutral"
+              ],
+              "neither": [
+                "sentiment.neutral"
+              ],
+              "nor": [
+                "sentiment.neutral"
+              ],
+              "okay": [
+                "sentiment.neutral"
+              ],
+              "but": [
+                "sentiment.neutral"
+              ],
+              "noth": [
+                "sentiment.neutral"
+              ],
+              "special": [
+                "sentiment.neutral"
+              ],
+              "just": [
+                "sentiment.neutral"
+              ],
+              "fine": [
+                "sentiment.neutral"
+              ],
+              "could": [
+                "sentiment.neutral"
+              ],
+              "be": [
+                "sentiment.neutral"
+              ],
+              "better": [
+                "sentiment.neutral"
+              ],
+              "remark": [
+                "sentiment.neutral"
+              ],
+              "about": [
+                "sentiment.neutral"
+              ]
+            },
+            "neuralNetwork": {
+              "settings": {
+                "locale": "en",
+                "tag": "nlu-en",
+                "keepStopwords": true,
+                "nonefeatureValue": 1,
+                "nonedeltaMultiplier": 1.2,
+                "spellCheck": false,
+                "spellCheckDistance": 1,
+                "filterZeros": true,
+                "log": true
+              },
+              "features": [
+                "i",
+                "love",
+                "this",
+                "is",
+                "fantast",
+                "am",
+                "veri",
+                "happi",
+                "great",
+                "experi",
+                "absolut",
+                "wonder",
+                "enjoy",
+                "it",
+                "a",
+                "lot",
+                "servic",
+                "was",
+                "satisfi",
+                "with",
+                "the",
+                "outcom",
+                "everyth",
+                "went",
+                "smooth",
+                "truli",
+                "outstand",
+                "work",
+                "exceed",
+                "my",
+                "expect",
+                "terribl",
+                "extrem",
+                "disappoint",
+                "bad",
+                "had",
+                "time",
+                "huge",
+                "letdown",
+                "hate",
+                "an",
+                "averag",
+                "neither",
+                "good",
+                "nor",
+                "okay",
+                "but",
+                "noth",
+                "special",
+                "just",
+                "fine",
+                "could",
+                "be",
+                "better",
+                "remark",
+                "about",
+                "so",
+                "not",
+                "at",
+                "all",
+                "aw"
+              ],
+              "intents": [
+                "sentiment.positive",
+                "sentiment.negative",
+                "sentiment.neutral"
+              ],
+              "perceptrons": [
+                [
+                  2.1994380950927734,
+                  3.3617846965789795,
+                  3.911398410797119,
+                  -1.0318998098373413,
+                  6.559021472930908,
+                  1.5265955924987793,
+                  0.36906564235687256,
+                  5.346737384796143,
+                  7.450038909912109,
+                  1.9897955656051636,
+                  2.42594051361084,
+                  7.016434192657471,
+                  4.491035461425781,
+                  -4.008671760559082,
+                  2.2699975967407227,
+                  4.491035461425781,
+                  -0.0503106564283371,
+                  -3.0172760486602783,
+                  1.9869259595870972,
+                  1.9869259595870972,
+                  -0.614300549030304,
+                  1.9869259595870972,
+                  3.1470820903778076,
+                  3.1470820903778076,
+                  3.1470820903778076,
+                  3.147081136703491,
+                  3.147081136703491,
+                  3.147081136703491,
+                  3.1470799446105957,
+                  3.1470799446105957,
+                  3.1470799446105957,
+                  -7.722391128540039,
+                  -3.001962661743164,
+                  -5.807153701782227,
+                  -7.201992034912109,
+                  -1.6114758253097534,
+                  -1.6114758253097534,
+                  -0.4282839596271515,
+                  -0.4282839596271515,
+                  -5.467405796051025,
+                  -0.5039899349212646,
+                  -0.5039899349212646,
+                  -0.19941115379333496,
+                  -1.4023561477661133,
+                  -0.19941115379333496,
+                  -0.8911073207855225,
+                  -0.07377877086400986,
+                  -2.6957638263702393,
+                  -2.1485085487365723,
+                  -2.422130584716797,
+                  -2.422130584716797,
+                  -1.614772081375122,
+                  -1.614772081375122,
+                  -1.614772081375122,
+                  -0.487736314535141,
+                  -0.487736314535141,
+                  -2.7655725479125977,
+                  -1.164762258529663,
+                  -1.164762258529663,
+                  -1.164762258529663,
+                  0,
+                  4.844295524439155
+                ],
+                [
+                  1.1760683059692383,
+                  -3.8626503944396973,
+                  0.7577401995658875,
+                  1.1054311990737915,
+                  -5.749288558959961,
+                  -0.4943602383136749,
+                  3.871711492538452,
+                  -6.484743118286133,
+                  -2.7934086322784424,
+                  0.8678569197654724,
+                  0.13049055635929108,
+                  -2.7732698917388916,
+                  -3.127974271774292,
+                  2.511314630508423,
+                  0.5160185694694519,
+                  -3.127974271774292,
+                  -1.0481120347976685,
+                  2.177915334701538,
+                  -1.7704665660858154,
+                  -1.7704665660858154,
+                  -2.106839418411255,
+                  -1.7704665660858154,
+                  -0.6458907127380371,
+                  -0.6458907127380371,
+                  -0.6458907127380371,
+                  -0.6458836197853088,
+                  -0.6458836197853088,
+                  -0.6458836197853088,
+                  -0.645876407623291,
+                  -0.645876407623291,
+                  -0.645876407623291,
+                  10.467238426208496,
+                  3.884901285171509,
+                  7.777984142303467,
+                  7.566789627075195,
+                  0.09717342257499695,
+                  0.09717342257499695,
+                  3.570915460586548,
+                  3.570915460586548,
+                  8.589048385620117,
+                  -2.307110071182251,
+                  -6.692343235015869,
+                  -4.577842712402344,
+                  -0.3458976447582245,
+                  -4.577842712402344,
+                  -5.536240577697754,
+                  -0.7489647269248962,
+                  -2.3842408657073975,
+                  -1.3100416660308838,
+                  -2.168682098388672,
+                  -2.168682098388672,
+                  -1.4794434309005737,
+                  -1.4794434309005737,
+                  -1.4794434309005737,
+                  -1.0261421203613281,
+                  -1.0261421203613281,
+                  3.892925262451172,
+                  4.232060432434082,
+                  4.232060432434082,
+                  4.232060432434082,
+                  7.642374515533447,
+                  1.939317382400011
+                ],
+                [
+                  -3.880668878555298,
+                  -0.29031434655189514,
+                  -5.912154674530029,
+                  4.848992347717285,
+                  -2.7637743949890137,
+                  -0.5930506587028503,
+                  -3.8704898357391357,
+                  -0.11743095517158508,
+                  -2.6283175945281982,
+                  -1.2019802331924438,
+                  -2.142134666442871,
+                  -1.7033885717391968,
+                  -0.6856386065483093,
+                  1.164170503616333,
+                  -2.62423038482666,
+                  -0.6856386065483093,
+                  -0.5465342998504639,
+                  -0.8201321363449097,
+                  -0.13913632929325104,
+                  -0.13913632929325104,
+                  1.6294612884521484,
+                  -0.13913632929325104,
+                  -1.2847148180007935,
+                  -1.2847148180007935,
+                  -1.2847148180007935,
+                  -1.2844761610031128,
+                  -1.2844761610031128,
+                  -1.2844761610031128,
+                  -1.284236192703247,
+                  -1.284236192703247,
+                  -1.284236192703247,
+                  -2.7100415229797363,
+                  0,
+                  -0.16340143978595734,
+                  0.4711637794971466,
+                  0,
+                  0,
+                  -1.7398380041122437,
+                  -1.7398380041122437,
+                  -1.9179269075393677,
+                  1.5248351097106934,
+                  9.843017578125,
+                  3.917109489440918,
+                  1.9822661876678467,
+                  3.917109489440918,
+                  4.250974655151367,
+                  -4.4430012702941895,
+                  5.995310306549072,
+                  4.36953592300415,
+                  5.321702003479004,
+                  5.321702003479004,
+                  3.287961721420288,
+                  3.287961721420288,
+                  3.287961721420288,
+                  1.622780442237854,
+                  1.622780442237854,
+                  -0.16340143978595734,
+                  -1.9329167604446411,
+                  -1.9329167604446411,
+                  -1.9329167604446411,
+                  -4.538403511047363,
+                  3.874758073353605
+                ]
+              ]
+            }
+          }
+        }
+      }
+    },
+    "intentDomains": {},
+    "extraSentences": [
+      [
+        "en",
+        "I love this!"
+      ],
+      [
+        "en",
+        "This is fantastic"
+      ],
+      [
+        "en",
+        "I am very happy"
+      ],
+      [
+        "en",
+        "Great experience!"
+      ],
+      [
+        "en",
+        "Absolutely wonderful!"
+      ],
+      [
+        "en",
+        "I enjoyed it a lot"
+      ],
+      [
+        "en",
+        "I love this service!"
+      ],
+      [
+        "en",
+        "This experience was fantastic!"
+      ],
+      [
+        "en",
+        "I am very satisfied with the outcome."
+      ],
+      [
+        "en",
+        "Everything went smoothly."
+      ],
+      [
+        "en",
+        "Truly outstanding work!"
+      ],
+      [
+        "en",
+        "Exceeded my expectations."
+      ],
+      [
+        "en",
+        "This service was terrible."
+      ],
+      [
+        "en",
+        "I am extremely disappointed."
+      ],
+      [
+        "en",
+        "The experience was very bad."
+      ],
+      [
+        "en",
+        "I had a terrible time."
+      ],
+      [
+        "en",
+        "It was a huge letdown."
+      ],
+      [
+        "en",
+        "I absolutely hated it."
+      ],
+      [
+        "en",
+        "It was an average experience."
+      ],
+      [
+        "en",
+        "The service was neither good nor bad."
+      ],
+      [
+        "en",
+        "It was okay, but nothing special."
+      ],
+      [
+        "en",
+        "The experience was just fine."
+      ],
+      [
+        "en",
+        "It could be better."
+      ],
+      [
+        "en",
+        "Nothing remarkable about it."
+      ],
+      [
+        "en",
+        "This is terrible"
+      ],
+      [
+        "en",
+        "I am so disappointed"
+      ],
+      [
+        "en",
+        "Not good at all"
+      ],
+      [
+        "en",
+        "Very bad experience"
+      ],
+      [
+        "en",
+        "I hated it"
+      ],
+      [
+        "en",
+        "It was awful"
+      ],
+      [
+        "en",
+        "It is okay"
+      ],
+      [
+        "en",
+        "Could be better"
+      ],
+      [
+        "en",
+        "Nothing special"
+      ],
+      [
+        "en",
+        "It was average"
+      ],
+      [
+        "en",
+        "Just fine"
+      ],
+      [
+        "en",
+        "Neither good nor bad"
+      ]
+    ]
+  },
+  "ner": {
+    "settings": {
+      "tag": "ner",
+      "entityPreffix": "%",
+      "entitySuffix": "%"
+    },
+    "rules": {}
+  },
+  "nlgManager": {
+    "settings": {
+      "tag": "nlg-manager"
+    },
+    "responses": {
+      "en": {
+        "sentiment.positive": [
+          {
+            "answer": "positive"
+          }
+        ],
+        "sentiment.negative": [
+          {
+            "answer": "negative"
+          }
+        ],
+        "sentiment.neutral": [
+          {
+            "answer": "neutral"
+          }
+        ]
+      }
+    }
+  },
+  "actionManager": {
+    "settings": {
+      "tag": "action-manager"
+    },
+    "actions": {}
+  },
+  "slotManager": {}
+}

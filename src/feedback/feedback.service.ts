@@ -3,11 +3,13 @@ import { InjectModel } from '@nestjs/mongoose';
 import { Feedback } from './entities/feedback.entity';
 import { Model } from 'mongoose';
 import { CreateFeedbackDto } from './dto/create-feedback.dto';
+import { NlpService } from 'src/nlp/nlp.service';
 
 @Injectable()
 export class FeedbackService {
   constructor(
     @InjectModel(Feedback.name) private feedBackModel: Model<Feedback>,
+    private readonly nlpService: NlpService,
   ) {}
 
   // create feedback for public/customer
@@ -52,47 +54,69 @@ export class FeedbackService {
   }
 
   // Feedback analytics for dashboard
-  async feedbackAnalysis() {
-    const [averageRating, ratingDistribution, topFeedback, feedbackTrends] =
-      await Promise.all([
-        this.feedBackModel.aggregate([
-          {
-            $group: {
-              _id: null,
-              averageRating: { $avg: { $toDouble: '$rating' } },
-            },
-          },
-        ]),
-        this.feedBackModel.aggregate([
-          {
-            $group: {
-              _id: '$rating',
-              count: { $sum: 1 },
-            },
-          },
-          {
-            $sort: { _id: 1 },
-          },
-        ]),
-        this.feedBackModel.find().sort({ rating: -1 }).limit(5).exec(),
-        this.feedBackModel.aggregate([
-          {
-            $group: {
-              _id: { $dateToString: { format: '%Y-%m', date: '$createdAt' } },
-              averageRating: { $avg: { $toDouble: '$rating' } },
-            },
-          },
-          {
-            $sort: { _id: 1 },
-          },
-        ]),
-      ]);
+  // async feedbackAnalysis() {
+  //   const [averageRating, ratingDistribution, topFeedback, feedbackTrends] =
+  //     await Promise.all([
+  //       this.feedBackModel.aggregate([
+  //         {
+  //           $group: {
+  //             _id: null,
+  //             averageRating: { $avg: { $toDouble: '$rating' } },
+  //           },
+  //         },
+  //       ]),
+  //       this.feedBackModel.aggregate([
+  //         {
+  //           $group: {
+  //             _id: '$rating',
+  //             count: { $sum: 1 },
+  //           },
+  //         },
+  //         {
+  //           $sort: { _id: 1 },
+  //         },
+  //       ]),
+  //       this.feedBackModel.find().sort({ rating: -1 }).limit(5).exec(),
+  //       this.feedBackModel.aggregate([
+  //         {
+  //           $group: {
+  //             _id: { $dateToString: { format: '%Y-%m', date: '$createdAt' } },
+  //             averageRating: { $avg: { $toDouble: '$rating' } },
+  //           },
+  //         },
+  //         {
+  //           $sort: { _id: 1 },
+  //         },
+  //       ]),
+  //     ]);
 
-    return {
-      averageRating: averageRating[0]?.averageRating || 0,
-      ratingDistribution,
-      topFeedback,
-      feedbackTrends,
-    };
+  //   return {
+  //     averageRating: averageRating[0]?.averageRating || 0,
+  //     ratingDistribution,
+  //     topFeedback,
+  //     feedbackTrends,
+  //   };
+  // }
+
+  async feedbackAnalysis() {
+    const feedbacks = await this.feedBackModel.find().exec();
+    const sentimentCounts = { positive: 0, negative: 0, neutral: 0 };
+    const detailedFeedbacks = [];
+
+    for (const feedback of feedbacks) {
+      const sentiment = await this.nlpService.analyzeSentiment(
+        feedback.comment,
+      );
+      let sentimentLabel = 'neutral';
+      if (sentiment.label === 'positive') sentimentLabel = 'positive';
+      else if (sentiment.label === 'negative') sentimentLabel = 'negative';
+
+      sentimentCounts[sentimentLabel]++;
+      detailedFeedbacks.push({
+        ...feedback.toObject(),
+        sentiment: sentimentLabel,
+      });
+    }
+    return { sentimentCounts, detailedFeedbacks };
   }
 }
