@@ -1,6 +1,5 @@
 import { Injectable } from '@nestjs/common';
 import * as Sentiment from 'sentiment';
-// import { Sentiment } from 'sentiment';
 
 @Injectable()
 export class NlpService {
