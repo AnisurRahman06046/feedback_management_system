@@ -8,7 +8,10 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.use(helmet());
   const corsOptions: CorsOptions = {
-    origin: true,
+    origin: [
+      'http://localhost:3000',
+      'https://feedback-management-system.onrender.com',
+    ],
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     allowedHeaders: 'Origin,X-Requested-With,Content-Type,Accept,Authorization',
     credentials: true,
