@@ -21,6 +21,10 @@ async function bootstrap() {
     )
     .setVersion(version)
     .addServer('http://localhost:3000', 'Local')
+    .addServer(
+      'https://feedback-management-system.onrender.com/api-docs',
+      'Production',
+    )
     .addTag(
       'Auth API',
       'Operations related to user authentication and registration',
@@ -37,6 +41,9 @@ async function bootstrap() {
 
   await app.listen(3000, () => {
     console.log('Api Documentation: http://localhost:3000/api-docs');
+    console.log(
+      'Api Documentation: https://feedback-management-system.onrender.com/api-docs',
+    );
   });
 }
 bootstrap();
