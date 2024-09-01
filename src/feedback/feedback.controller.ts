@@ -62,6 +62,7 @@ export class FeedbackController {
     status: HttpStatus.OK,
     description: 'Feedback analysis successful',
   })
+  @ApiResponse({ status: 500, description: 'Internal server error.' })
   async feedbackAnalysis() {
     try {
       const result = await this.feedbackService.feedbackAnalysis();

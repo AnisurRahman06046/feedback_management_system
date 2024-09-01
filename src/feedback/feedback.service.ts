@@ -54,49 +54,6 @@ export class FeedbackService {
   }
 
   // Feedback analytics for dashboard
-  // async feedbackAnalysis() {
-  //   const [averageRating, ratingDistribution, topFeedback, feedbackTrends] =
-  //     await Promise.all([
-  //       this.feedBackModel.aggregate([
-  //         {
-  //           $group: {
-  //             _id: null,
-  //             averageRating: { $avg: { $toDouble: '$rating' } },
-  //           },
-  //         },
-  //       ]),
-  //       this.feedBackModel.aggregate([
-  //         {
-  //           $group: {
-  //             _id: '$rating',
-  //             count: { $sum: 1 },
-  //           },
-  //         },
-  //         {
-  //           $sort: { _id: 1 },
-  //         },
-  //       ]),
-  //       this.feedBackModel.find().sort({ rating: -1 }).limit(5).exec(),
-  //       this.feedBackModel.aggregate([
-  //         {
-  //           $group: {
-  //             _id: { $dateToString: { format: '%Y-%m', date: '$createdAt' } },
-  //             averageRating: { $avg: { $toDouble: '$rating' } },
-  //           },
-  //         },
-  //         {
-  //           $sort: { _id: 1 },
-  //         },
-  //       ]),
-  //     ]);
-
-  //   return {
-  //     averageRating: averageRating[0]?.averageRating || 0,
-  //     ratingDistribution,
-  //     topFeedback,
-  //     feedbackTrends,
-  //   };
-  // }
 
   async feedbackAnalysis() {
     const feedbacks = await this.feedBackModel.find().exec();
@@ -104,19 +61,17 @@ export class FeedbackService {
     const detailedFeedbacks = [];
 
     for (const feedback of feedbacks) {
-      const sentiment = await this.nlpService.analyzeSentiment(
-        feedback.comment,
-      );
-      let sentimentLabel = 'neutral';
-      if (sentiment.label === 'positive') sentimentLabel = 'positive';
-      else if (sentiment.label === 'negative') sentimentLabel = 'negative';
+      const sentiment = this.nlpService.analyzeSentiment(feedback.comment);
+      const sentimentLabel = sentiment.label;
 
       sentimentCounts[sentimentLabel]++;
       detailedFeedbacks.push({
         ...feedback.toObject(),
         sentiment: sentimentLabel,
+        sentimentScore: sentiment.score,
       });
     }
+
     return { sentimentCounts, detailedFeedbacks };
   }
 }
