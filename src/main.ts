@@ -21,10 +21,7 @@ async function bootstrap() {
     )
     .setVersion(version)
     .addServer('http://localhost:3000', 'Local')
-    .addServer(
-      'https://feedback-management-system.onrender.com/api-docs',
-      'Production',
-    )
+    .addServer('https://feedback-management-system.onrender.com', 'Production')
     .addTag(
       'Auth API',
       'Operations related to user authentication and registration',
