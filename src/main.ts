@@ -6,6 +6,7 @@ import { version } from '../package.json';
 import { CorsOptions } from '@nestjs/common/interfaces/external/cors-options.interface';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+  const port = process.env.port || 3000
   app.use(helmet());
   const corsOptions: CorsOptions = {
     origin: [
@@ -39,8 +40,8 @@ async function bootstrap() {
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api-docs', app, document);
 
-  await app.listen(3000, () => {
-    console.log('Api Documentation: http://localhost:3000/api-docs');
+  await app.listen(port, () => {
+    console.log(`Api Documentation: http://localhost:${port}/api-docs`);
     console.log(
       'Api Documentation: https://feedback-management-system.onrender.com/api-docs',
     );
