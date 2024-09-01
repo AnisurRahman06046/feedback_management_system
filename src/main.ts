@@ -13,8 +13,15 @@ async function bootstrap() {
       'This API handles user feedback submissions and performs sentiment analysis on the feedback received.',
     )
     .setVersion(version)
-    .addTag('FeedBack')
-    .addTag('Authentication')
+    .addTag(
+      'Auth API',
+      'Operations related to user authentication and registration',
+    )
+    .addTag(
+      'Feedback API',
+      'Operations related to user feedback and sentiment analysis',
+    )
+    .addBearerAuth()
     .build();
 
   const document = SwaggerModule.createDocument(app, config);

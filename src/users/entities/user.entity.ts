@@ -1,19 +1,19 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { UserRoles } from '../user.constants';
+import { Document } from 'mongoose';
 
-@Schema({ timestamps: true })
-export class User {
-  @Prop({ type: String, required: true })
+@Schema()
+export class User extends Document {
+  @Prop({ required: true })
   userName: string;
 
-  @Prop({ type: String, required: true })
+  @Prop({ required: true, unique: true })
   email: string;
 
-  @Prop({ type: String, required: true, default: UserRoles.ADMIN })
-  role: string;
+  @Prop({ required: true })
+  password: string; // Changed from hashedPassword to password
 
-  @Prop({ type: String, required: true })
-  hashedPassword: string;
+  @Prop({ default: 'admin' })
+  role: string;
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);

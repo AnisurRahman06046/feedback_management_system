@@ -3,10 +3,15 @@ import { FeedbackService } from './feedback.service';
 import { CreateFeedbackDto } from './dto/create-feedback.dto';
 
 import { ResponseHandler } from './../utils/responseHandler';
-// import { Roles } from 'src/auth/roles.decorator';
-// import { UserRoles } from 'src/users/user.constants';
+import { Roles } from 'src/auth/roles.decorator';
+import { UserRoles } from 'src/users/user.constants';
 import { Public } from 'src/auth/public.route';
-import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
+import {
+  ApiBearerAuth,
+  ApiOperation,
+  ApiResponse,
+  ApiTags,
+} from '@nestjs/swagger';
 
 @ApiTags('Feedback API')
 @Controller('feedback')
@@ -33,10 +38,11 @@ export class FeedbackController {
     }
   }
 
-  @Public()
+  // @Public()
   // retrieve all feedbacks
-  // @Roles(UserRoles.ADMIN)
+  @Roles(UserRoles.ADMIN)
   @Get('all-feedbacks')
+  @ApiBearerAuth()
   @ApiOperation({ summary: 'Retrieve all feedbacks' })
   @ApiResponse({
     status: HttpStatus.CREATED,
@@ -54,9 +60,10 @@ export class FeedbackController {
       return ResponseHandler.error(error.message);
     }
   }
-  @Public()
-  // @Roles(UserRoles.ADMIN)
+
+  @Roles(UserRoles.ADMIN)
   @Get('analysis')
+  @ApiBearerAuth()
   @ApiOperation({ summary: 'Analyze feedbacks for sentiment' })
   @ApiResponse({
     status: HttpStatus.OK,
