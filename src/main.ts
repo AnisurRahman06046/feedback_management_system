@@ -20,6 +20,7 @@ async function bootstrap() {
       'This API handles user feedback submissions and performs sentiment analysis on the feedback received.',
     )
     .setVersion(version)
+    .addServer('http://localhost:3000', 'Local')
     .addTag(
       'Auth API',
       'Operations related to user authentication and registration',
@@ -34,6 +35,8 @@ async function bootstrap() {
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api-docs', app, document);
 
-  await app.listen(3000);
+  await app.listen(3000, () => {
+    console.log('Api Documentation: http://localhost:3000/api-docs');
+  });
 }
 bootstrap();

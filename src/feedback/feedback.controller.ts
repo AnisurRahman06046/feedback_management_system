@@ -3,15 +3,16 @@ import { FeedbackService } from './feedback.service';
 import { CreateFeedbackDto } from './dto/create-feedback.dto';
 
 import { ResponseHandler } from './../utils/responseHandler';
-import { Roles } from 'src/auth/roles.decorator';
-import { UserRoles } from 'src/users/user.constants';
-import { Public } from 'src/auth/public.route';
+
+import { UserRoles } from '../../src/users/user.constants';
+import { Public } from '../../src/auth/public.route';
 import {
   ApiBearerAuth,
   ApiOperation,
   ApiResponse,
   ApiTags,
 } from '@nestjs/swagger';
+import { Roles } from '../../src/auth/roles.decorator';
 
 @ApiTags('Feedback API')
 @Controller('feedback')
