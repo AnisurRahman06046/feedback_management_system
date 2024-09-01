@@ -6,7 +6,7 @@ import { ResponseHandler } from './../utils/responseHandler';
 // import { Roles } from 'src/auth/roles.decorator';
 // import { UserRoles } from 'src/users/user.constants';
 import { Public } from 'src/auth/public.route';
-import { ApiTags } from '@nestjs/swagger';
+import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 
 @ApiTags('Feedback API')
 @Controller('feedback')
@@ -15,6 +15,11 @@ export class FeedbackController {
 
   @Public()
   @Post('submit')
+  @ApiOperation({ summary: 'Submit feedback' })
+  @ApiResponse({
+    status: HttpStatus.CREATED,
+    description: 'Feedback submitted successfully',
+  })
   async createFeedback(@Body() payload: CreateFeedbackDto) {
     try {
       const result = await this.feedbackService.createFeedBack(payload);
@@ -27,10 +32,16 @@ export class FeedbackController {
       return ResponseHandler.error(error.message);
     }
   }
+
   @Public()
   // retrieve all feedbacks
   // @Roles(UserRoles.ADMIN)
   @Get('all-feedbacks')
+  @ApiOperation({ summary: 'Retrieve all feedbacks' })
+  @ApiResponse({
+    status: HttpStatus.CREATED,
+    description: 'Feedbacks fetched successfully',
+  })
   async allFeedbacks(@Query() query: any) {
     try {
       const result = await this.feedbackService.allFeedbacks(query);
@@ -46,6 +57,11 @@ export class FeedbackController {
   @Public()
   // @Roles(UserRoles.ADMIN)
   @Get('analysis')
+  @ApiOperation({ summary: 'Analyze feedbacks for sentiment' })
+  @ApiResponse({
+    status: HttpStatus.OK,
+    description: 'Feedback analysis successful',
+  })
   async feedbackAnalysis() {
     try {
       const result = await this.feedbackService.feedbackAnalysis();

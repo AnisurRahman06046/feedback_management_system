@@ -9,9 +9,12 @@ async function bootstrap() {
   app.enableCors();
   const config = new DocumentBuilder()
     .setTitle('Customer Feedback Sentiment Analysis RestAPI')
-    .setDescription('API description')
+    .setDescription(
+      'This API handles user feedback submissions and performs sentiment analysis on the feedback received.',
+    )
     .setVersion(version)
-    .addTag('FeedBack API')
+    .addTag('FeedBack')
+    .addTag('Authentication')
     .build();
 
   const document = SwaggerModule.createDocument(app, config);
