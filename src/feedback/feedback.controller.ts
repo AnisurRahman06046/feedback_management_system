@@ -6,7 +6,9 @@ import { ResponseHandler } from './../utils/responseHandler';
 // import { Roles } from 'src/auth/roles.decorator';
 // import { UserRoles } from 'src/users/user.constants';
 import { Public } from 'src/auth/public.route';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('Feedback API')
 @Controller('feedback')
 export class FeedbackController {
   constructor(private readonly feedbackService: FeedbackService) {}
