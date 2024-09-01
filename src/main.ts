@@ -6,7 +6,7 @@ import { version } from '../package.json';
 import { CorsOptions } from '@nestjs/common/interfaces/external/cors-options.interface';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  const port = process.env.port || 3000
+  const port = process.env.port || 3000;
   app.use(helmet());
   const corsOptions: CorsOptions = {
     origin: [
@@ -24,8 +24,8 @@ async function bootstrap() {
       'This API handles user feedback submissions and performs sentiment analysis on the feedback received.',
     )
     .setVersion(version)
-    .addServer('http://localhost:3000', 'Local')
     .addServer('https://feedback-management-system.onrender.com', 'Production')
+    .addServer('http://localhost:3000', 'Local')
     .addTag(
       'Auth API',
       'Operations related to user authentication and registration',
