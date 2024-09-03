@@ -9,6 +9,7 @@ import { Public } from '../../src/auth/public.route';
 import {
   ApiBearerAuth,
   ApiOperation,
+  ApiQuery,
   ApiResponse,
   ApiTags,
 } from '@nestjs/swagger';
@@ -71,9 +72,37 @@ export class FeedbackController {
     description: 'Feedback analysis successful',
   })
   @ApiResponse({ status: 500, description: 'Internal server error.' })
-  async feedbackAnalysis() {
+  @ApiQuery({
+    name: 'sentiment',
+    required: false,
+    type: String,
+    description: 'Filter by sentiment (positive, negative, neutral)',
+  })
+  @ApiQuery({
+    name: 'startDate',
+    required: false,
+    type: String,
+    description: 'Start date for filtering (YYYY-MM-DD)',
+  })
+  @ApiQuery({
+    name: 'endDate',
+    required: false,
+    type: String,
+    description: 'End date for filtering (YYYY-MM-DD)',
+  })
+  async feedbackAnalysis(
+    @Query('sentiment') sentimentFilter?: string,
+    @Query('startDate') startDate?: string,
+    @Query('endDate') endDate?: string,
+  ) {
     try {
-      const result = await this.feedbackService.feedbackAnalysis();
+      const start = startDate ? new Date(startDate) : undefined;
+      const end = endDate ? new Date(endDate) : undefined;
+      const result = await this.feedbackService.feedbackAnalysis(
+        sentimentFilter,
+        start,
+        end,
+      );
       return ResponseHandler.success(result, 'Successfull', HttpStatus.OK);
     } catch (error) {
       return ResponseHandler.error(error.message);

@@ -55,14 +55,38 @@ export class FeedbackService {
 
   // Feedback analytics for dashboard
 
-  async feedbackAnalysis() {
-    const feedbacks = await this.feedBackModel.find().exec();
+  async feedbackAnalysis(
+    sentimentFilter?: string,
+    startDate?: Date | undefined,
+    endDate?: Date | undefined,
+  ) {
+    const query: any = {};
+
+    // Apply date range filter if startDate and endDate are provided
+    if (startDate && endDate) {
+      query.createdAt = { $gte: startDate, $lte: endDate };
+    } else if (startDate) {
+      query.createdAt = { $gte: startDate };
+    } else if (endDate) {
+      query.createdAt = { $lte: endDate };
+    }
+
+    // console.log('Query:', query); // Log the query object for debugging
+
+    // Fetch feedbacks based on date range
+    const feedbacks = await this.feedBackModel.find(query).exec();
     const sentimentCounts = { positive: 0, negative: 0, neutral: 0 };
     const detailedFeedbacks = [];
 
+    // Iterate through feedbacks and analyze sentiment
     for (const feedback of feedbacks) {
       const sentiment = this.nlpService.analyzeSentiment(feedback.comment);
       const sentimentLabel = sentiment.label;
+
+      // Apply sentiment filter after analysis
+      if (sentimentFilter && sentimentLabel !== sentimentFilter.toLowerCase()) {
+        continue; // Skip feedbacks that don't match the sentiment filter
+      }
 
       sentimentCounts[sentimentLabel]++;
       detailedFeedbacks.push({
